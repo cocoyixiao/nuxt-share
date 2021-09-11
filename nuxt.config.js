@@ -30,7 +30,7 @@ export default {
   },
   proxy: {
     '/restApi': {
-      target: 'http://mapi.hancourse.net/',
+      target: 'https//api.isoyu.com/api/',
       changeOrigin: true,
       pathRewrite: {
         '^/restApi': '/'
@@ -48,10 +48,15 @@ export default {
     description: 'SEO Description'
   },
   build: {
-    postcss: [
-      require('postcss-px2rem')({
-        remUnit: 37.5
-      })
-    ]
+    postcss: {
+      plugins: {
+        // Disable `postcss-url`
+        'postcss-url': false,
+        // Add some plugins
+        'postcss-px2rem': {
+          remUnit: 37.5
+        }
+      }
+    }
   }
 }
